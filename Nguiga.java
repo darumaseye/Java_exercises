@@ -1,118 +1,131 @@
 import java.util.*;
+import java.io.*;
 
 
 public class Nguiga
 {
+	public static int findMin(long[] a){
+		long min=a[0];
+		int index=0;
+		for(int i=1; i<a.length; i++){
+			if(a[i]<=min){
+				min=a[i];
+				index=i;
+			}
+		}
+		return index;
+	}
+
   public static void main(String[] args)
   {
 
-    System.out.println("Welcome to Nguiga! \nThis is a 2 players game.\nThe Winner is the fastest player in solving the request.\n1.Quick Calc:\nSolve the expression in the input window.\n2. Quick Typing:\nchoose the word with of playing\nthan input that in the window\n...just a tip...\nis better to not mistake!");//Fa comparire la finestra che illustra il regolamento.
+    System.out.println("Welcome to Nguiga!\nThe Winner is the fastest player in solving the request.\n1.Quick Calc:\nSolve the expression in the input window.\n2. Quick Typing:\nchoose the word with of playing than input that in the window\n...just a tip...is better to not mistake!\n");//Fa comparire la finestra che illustra il regolamento.
 
-    Scanner input = new Scanner(System.in);
-    Scanner input2 = new Scanner(System.in);
-    System.out.print("Type 'calc' or 'typing' to choose the game mood: ");
-    String scelta_gioco = input.nextLine();
 
-    if (scelta_gioco.equals("typing")){
-		String digit1,digit2;
+    InputStreamReader reader = new InputStreamReader(System.in);
 
-       System.out.print("Choose the word: ");
-       String parola_scelta = input.nextLine();//come sopra
+    BufferedReader myInput = new BufferedReader(reader);
 
-	   System.out.print("Press 'Enter'\nto start immediatly,\n you should input the word\nuntil this will be correct: ");
-       String variniziamano1 = input.nextLine();
-       long t0 = 0;
-          t0 = System.currentTimeMillis();
-          do {
-			  System.out.print("Input "+parola_scelta+": ");//Finestra di input 1° giocatore
-              digit1 = input.nextLine();
-		     }
-		  while (!digit1.equals(parola_scelta));
-       //parentesi conclusiva primo if secondario
+    System.out.print("Type \"calc\" or \"typing\" to choose the game moode: ");
+    String game_mode ="";
+    try{ game_mode=myInput.readLine();
+		}catch (IOException e){System.exit(-1);}
 
-       long t1 = System.currentTimeMillis();
-	   long diff1 = t1-t0;
-	   System.out.println("Player 1 has typed the correct word in "+diff1+" milliseconds");//RIsultati 1°giocatore Personalizzazionedei nomi
+    System.out.print("Input the number of players:");
+    int number_of_players=0;
+    try{
+    	number_of_players=Integer.parseInt(myInput.readLine());
+	}catch (IOException e){System.exit(-1);}
+    long t[]=new long[number_of_players];
 
-       System.gc();
 
-       System.out.print("Press 'Enter'\nto start immediatly,\n you should input the word\nuntil this will be correct: ");// 2° FInestra di INput per Iniziare
-       String variniziamano2 = input2.nextLine();
-       long t2 = 0;
-          t2 = System.currentTimeMillis();
-          do {
-              System.out.print("Input "+parola_scelta+": ");//Finestra di Input 2° giocatore
-              digit2 = input.nextLine();
-		     }
-          while (!parola_scelta.equals(digit2));// Faccio ripetere la digitazione della parola fin quando non è corretta
-       //parentesi conclusiva secondo if secondario
 
-       long t3 = System.currentTimeMillis();
-	   long diff2 = t3-t2;
-       System.out.println("Player 2 has typed the correct word in "+diff2+" milliseconds");//Risultati 2°giocatore
+    if (game_mode.equals("typing")){
+		String digit[]= new String[number_of_players];
+		System.out.print("Choose the word: ");
+		String chosen_word="";
+		try{
+			chosen_word=myInput.readLine();
+		}catch (IOException e){System.exit(-1);}
 
-       if (diff1<diff2){
-		   System.out.println("The Winner is....Player 1!!!!");
-	      }
-	   if (diff1>diff2){
-		   System.out.println("The Winner is....Player 2!!!!");
-	      }
-    }//parentesi conclusiva if principale
 
-    if (scelta_gioco.equals("calc")){
-		int result1, result2;
+		for(int i=0; i<number_of_players; i++){
 
-	   System.out.print("Press 'Enter'\nto start immediatly,\n you should input the solution \nuntil this is corrected: ");
-	   String variniziamente1 = input.nextLine();
-       long t0 = 0;
-       t0 = System.currentTimeMillis();
-		do {
-		      System.out.print("Calc 8+147+15+(32*3)*0-61 = ");//Finestra di Input 1° giocatore
-		      result1 = input.nextInt();
-		     }
-		while (result1!=109);// Faccio ripetere il calcolo fin quando non è corretto
-       //parentesi conlcusiva primo if del 2° if primario
+			System.out.print("You have to enter the word until this is correctet.\nPress \"Enter\"to start immediately: ");
+			try{
+				myInput.readLine();
+			}catch (IOException e){System.exit(-1);}
 
-	  long t1 = System.currentTimeMillis();
-	  long diff1 = t1-t0;
-	  System.out.println("Player 1 has solved the expression in "+diff1+" ms");
 
-      System.out.print("Press 'Enter'\nto start immediatly,\n you should input the solution \nuntil this is corrected: ");// 1° FInestra di INput per Iniziare
-	  String variniziamente2 = input2.nextLine();
-      long t2 = 0;
-      t2 = System.currentTimeMillis();
-	  do {
-	  	System.out.print("Calc 28+136+5+(64*9)*0-86= ");//Finestra di Input 1° giocatore
-	  	result2 = input.nextInt();
-		}
-	  while (result2!=83);// Faccio ripetere il calcolo fin quando non è corretto
-           //parentesi conlcusiva secondo if del 2° if primario
+			t[i] = System.currentTimeMillis();
+			do {
+				System.out.print("Input \""+chosen_word+"\": ");
+				try{
+					digit[i]=myInput.readLine();
+				}catch (IOException e){}
 
-      long t3 = System.currentTimeMillis();
-	  long diff2 = t3-t2;
-	  System.out.println("Player 2 has solved the expression in "+diff2+" ms");
-	  if (diff1<diff2){
-	     System.out.println("The Winner is....Player 1!!!!");
-	  }
-	  if (diff1>diff2){
-	  	 System.out.println("The Winner is....Player 2!!!!");
-	  }
-     }//parentesi del 2° if primario
-    /*Da aggiungere:
-              Tasto Inizia, blocco main qualcosa che separa;RISOLTO FUNZIONE IF
-              Calcolo del giocatore Vincente;
-              Condizioni Per la parola scelta se la parola è sbagliata vince l'altro;
-              Controllare come azzerare le variabili;RISOLVERE CON BLOCCO DI ISTRUZIONI
-              Aumentare numero partecipanti secondo INPUT;
-              Capire come scrivere il travirgolette in una stringa o in una variabile qualsiasi;
-              Elaborare una Versione con i Numeri;
-              Menù di Scelta Velocità di Calcolo o Velocità di Scrittura
-              semplificare la procedura di inizio
-              aggiungere finestra che a fine gioco fa riiniziare scegliendo la modalità
-              Versione con calcoli casuali
-              Custom Names
-              Tempi in secondi
-              Log*/
+			}while (!digit[i].equals(chosen_word));
+
+			t[i]=System.currentTimeMillis()-t[i];
+			System.out.println("Player "+(i+1)+" has typed the correct word in "+t[i]+" milliseconds");
+
+		  }
+		 int best=findMin(t);
+		 System.out.println("The Winner is....Player "+(best+1)+"!!!!");
+
+    }else if (game_mode.equals("calc")){
+		Random rand= new Random();
+		int result[]= new int[number_of_players];
+		int random[]=new int[6];
+		String exp;
+		int exactValue;
+
+
+		for(int i=0; i<number_of_players; i++){
+			System.out.print("You have to enter the solution until this is corrected.\nPress 'Enter'to start immediately: ");
+			try{
+				myInput.readLine();
+			}catch (IOException e){System.exit(-1);}
+
+			for(int j=0; j<6; j++){
+				random[j]=rand.nextInt(10);
+			}
+			exp=random[0]+"+14"+random[1]+"+1"+random[2]+"+(3"+random[3]+"*"+random[4]+")*0-6"+random[5];
+			exactValue=random[0]+140+random[1]+10+random[2]-(60+random[5]);
+			System.out.println(exactValue);
+
+			t[i] = System.currentTimeMillis();
+			do {
+				System.out.print("Calc "+exp+" = ");
+				try{
+					result[i]=Integer.parseInt(myInput.readLine());
+				}catch (IOException e){System.exit(-1);}
+
+			}while (result[i]!=exactValue);
+
+			t[i]=System.currentTimeMillis()-t[i];
+			System.out.println("Player "+(i+1)+" has solved the expression in "+t[i]+" milliseconds");
+
+		  }
+		 int best=findMin(t);
+		 System.out.println("The Winner is....Player "+(best+1)+"!!!!");
+
+
+     }else{}
+    /*To Add:
+              "Press Enter"________________________________DONE
+              Calc of the Winner___________________________DONE
+              The Number of players depends on input ______DONE
+              Add the character "__________________________DONE
+              Semi-Random Expressions______________________DONE
+              2 modes: quick calc, quick typing____________DONE
+              Loop, and exit_______________________________
+              Custom Names_________________________________
+              Handle the dead heat_________________________
+              Times in Seconds_____________________________
+              Memorize the Players in file_________________
+              Clean Code___________________________________
+;*/
 
 
  }
