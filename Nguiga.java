@@ -1,4 +1,5 @@
-import fond.io.*;
+import java.util.*;
+
 
 public class Nguiga
 {
@@ -7,26 +8,27 @@ public class Nguiga
 
     System.out.println("Welcome to Nguiga! \nThis is a 2 players game.\nThe Winner is the fastest player in solving the request.\n1.Quick Calc:\nSolve the expression in the input window.\n2. Quick Typing:\nchoose the word with of playing\nthan input that in the window\n...just a tip...\nis better to not mistake!");//Fa comparire la finestra che illustra il regolamento.
 
-    InputWindow opzioni_gioco = new InputWindow();
-    String scelta_gioco = opzioni_gioco.readString("Type 'calc' or 'typing' to choose the game mood");
+    Scanner input = new Scanner(System.in);
+    Scanner input2 = new Scanner(System.in);
+    System.out.print("Type 'calc' or 'typing' to choose the game mood: ");
+    String scelta_gioco = input.nextLine();
 
     if (scelta_gioco.equals("typing")){
+		String digit1,digit2;
 
-       InputWindow parola_iniziale = new InputWindow();// Fa comparire la finestra per scegliere la parola
-       String parola_scelta = parola_iniziale.readString("Choose the word");//come sopra
+       System.out.print("Choose the word: ");
+       String parola_scelta = input.nextLine();//come sopra
 
-       InputWindow winwaitmano1 = new InputWindow();// 1° FInestra di INput per Iniziare
-       String variniziamano1 = winwaitmano1.readString("Type 'Start' and click 'ok'\nto start immediatly,\n you should input the word\nuntil this will be correct");
+	   System.out.print("Press 'Enter'\nto start immediatly,\n you should input the word\nuntil this will be correct: ");
+       String variniziamano1 = input.nextLine();
        long t0 = 0;
-       if (variniziamano1.equals("Start")){
           t0 = System.currentTimeMillis();
-          String digit1 = "";
           do {
-			  InputWindow inputgmer1 = new InputWindow ();//Finestra di input 1° giocatore
-              digit1 = inputgmer1.readString("Input "+parola_scelta);
+			  System.out.print("Input "+parola_scelta+": ");//Finestra di input 1° giocatore
+              digit1 = input.nextLine();
 		     }
 		  while (!digit1.equals(parola_scelta));
-       }//parentesi conclusiva primo if secondario
+       //parentesi conclusiva primo if secondario
 
        long t1 = System.currentTimeMillis();
 	   long diff1 = t1-t0;
@@ -34,18 +36,16 @@ public class Nguiga
 
        System.gc();
 
-       InputWindow winwaitmano2 = new InputWindow();// 2° FInestra di INput per Iniziare
-       String variniziamano2 = winwaitmano2.readString("Type 'Start' and click 'ok'\nto start immediatly,\n you should input the word\nuntil this will be correct");
+       System.out.print("Press 'Enter'\nto start immediatly,\n you should input the word\nuntil this will be correct: ");// 2° FInestra di INput per Iniziare
+       String variniziamano2 = input2.nextLine();
        long t2 = 0;
-       if (variniziamano2.equals("Start")){
-          String digit2 = "";
           t2 = System.currentTimeMillis();
           do {
-              InputWindow inputgmer2 = new InputWindow ();//Finestra di Input 2° giocatore
-              digit2 = inputgmer2.readString("Input "+parola_scelta);
+              System.out.print("Input "+parola_scelta+": ");//Finestra di Input 2° giocatore
+              digit2 = input.nextLine();
 		     }
           while (!parola_scelta.equals(digit2));// Faccio ripetere la digitazione della parola fin quando non è corretta
-       }//parentesi conclusiva secondo if secondario
+       //parentesi conclusiva secondo if secondario
 
        long t3 = System.currentTimeMillis();
 	   long diff2 = t3-t2;
@@ -60,39 +60,33 @@ public class Nguiga
     }//parentesi conclusiva if principale
 
     if (scelta_gioco.equals("calc")){
+		int result1, result2;
 
-	   InputWindow winwaitmente1 = new InputWindow();// 1° FInestra di INput per Iniziare
-	   String variniziamente1 = winwaitmente1.readString("Type 'Start' and click 'ok'\nto start immediatly,\n you should input the solution \nuntil this is corrected");
+	   System.out.print("Press 'Enter'\nto start immediatly,\n you should input the solution \nuntil this is corrected: ");
+	   String variniziamente1 = input.nextLine();
        long t0 = 0;
-
-       if (variniziamente1.equals("Start")){
-          String digit1 = "";
-          t0 = System.currentTimeMillis();
-		  do {
-		      InputWindow inputgmer1 = new InputWindow ();//Finestra di Input 1° giocatore
-		      digit1 = inputgmer1.readString("Calc 8+147+15+(32*3)*0-61");
+       t0 = System.currentTimeMillis();
+		do {
+		      System.out.print("Calc 8+147+15+(32*3)*0-61 = ");//Finestra di Input 1° giocatore
+		      result1 = input.nextInt();
 		     }
-		  while (!digit1.equals("109"));// Faccio ripetere il calcolo fin quando non è corretto
-       }//parentesi conlcusiva primo if del 2° if primario
+		while (result1!=109);// Faccio ripetere il calcolo fin quando non è corretto
+       //parentesi conlcusiva primo if del 2° if primario
 
 	  long t1 = System.currentTimeMillis();
 	  long diff1 = t1-t0;
 	  System.out.println("Player 1 has solved the expression in "+diff1+" ms");
 
-      InputWindow winwaitmente2 = new InputWindow();// 1° FInestra di INput per Iniziare
-	  String variniziamente2 = winwaitmente1.readString("Type 'Start' and click 'ok'\nto start immediatly,\n you should input the solution \nuntil this is corrected");
+      System.out.print("Press 'Enter'\nto start immediatly,\n you should input the solution \nuntil this is corrected: ");// 1° FInestra di INput per Iniziare
+	  String variniziamente2 = input2.nextLine();
       long t2 = 0;
-	         if (variniziamente2.equals("Start")){
-	  		  String digit2 = "";
-	  		  t2 = System.currentTimeMillis();
-	          //int digit2 = 0;
-	  		  do {
-
-	  		      InputWindow inputgmer2 = new InputWindow();//Finestra di Input 1° giocatore
-	  		      digit2 = inputgmer2.readString("Calc 28+136+5+(64*9)*0-86");
-			     }
-	  		  while (!digit2.equals("83"));// Faccio ripetere il calcolo fin quando non è corretto
-            }//parentesi conlcusiva secondo if del 2° if primario
+      t2 = System.currentTimeMillis();
+	  do {
+	  	System.out.print("Calc 28+136+5+(64*9)*0-86= ");//Finestra di Input 1° giocatore
+	  	result2 = input.nextInt();
+		}
+	  while (result2!=83);// Faccio ripetere il calcolo fin quando non è corretto
+           //parentesi conlcusiva secondo if del 2° if primario
 
       long t3 = System.currentTimeMillis();
 	  long diff2 = t3-t2;
