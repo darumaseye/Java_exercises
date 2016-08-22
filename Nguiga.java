@@ -49,7 +49,7 @@ public class Nguiga
 
        long t3 = System.currentTimeMillis();
 	   long diff2 = t3-t2;
-       System.out.println("Player 2 has typed the correct word in "+diff1+" milliseconds");//Risultati 2°giocatore
+       System.out.println("Player 2 has typed the correct word in "+diff2+" milliseconds");//Risultati 2°giocatore
 
        if (diff1<diff2){
 		   System.out.println("The Winner is....Player 1!!!!");
@@ -87,8 +87,8 @@ public class Nguiga
 	  		  t2 = System.currentTimeMillis();
 	          //int digit2 = 0;
 	  		  do {
-				  int a=
-	  		      InputWindow inputgmer2 = new InputWindow ();//Finestra di Input 1° giocatore
+
+	  		      InputWindow inputgmer2 = new InputWindow();//Finestra di Input 1° giocatore
 	  		      digit2 = inputgmer2.readString("Calc 28+136+5+(64*9)*0-86");
 			     }
 	  		  while (!digit2.equals("83"));// Faccio ripetere il calcolo fin quando non è corretto
@@ -118,8 +118,8 @@ public class Nguiga
               Versione con calcoli casuali
               Custom Names
               Tempi in secondi
-              Log/*
-    
+              Log*/
+
 
  }
 }
