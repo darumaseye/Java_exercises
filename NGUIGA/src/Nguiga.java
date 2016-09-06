@@ -5,7 +5,7 @@
  * Infact GameMods implements some general methods that all classes  use and implements the input.
  * This is the first version, in which the code was structured in a (as best as i could) Pleasant-to-Read way.
  *
- * @version 1.1
+ * @version 1.1.0.3
  * @authors Jacopo Taccucci (wonty) & SquallorX (since 1.1)
  * @since 1.0
  *
@@ -14,9 +14,10 @@
 public class Nguiga /*extends GameModes*/{
 
 	public static String s;
+	public static double l;
 
 	public static void main(String[] args){
-		System.out.println("Welcome to Nguiga!\nThe Winner is the fastest player in solving the request.\n1.Quick Calc:\nSolve the expression in the input window.\n2. Quick Typing:\nchoose the word to play with; than input that in the window\nType Everywhere:\n\"menu\" to return to main menu and change players\n \"exit\" to exit the game.\n LET'S START!\n");
+		System.out.println("Welcome to Nguiga!\nThe Winner is the fastest player in solving the request.\n1.Quick Calc:\nSolve the expression, 1 mistake -> 1 dead.\n2. Quick Typing:\nchoose the word to play with; than input that as faster as you can\nType Everywhere:\n\"menu\" to return to main menu and change players\n\"exit\" to exit the game.\nLET'S START!\n");
 
 		play();
 
@@ -25,7 +26,7 @@ public class Nguiga /*extends GameModes*/{
 	public static void play(){
 
 		System.out.print("Type\n\"calc\" or \"typing\" to choose the game mode: ");
-		s=Input.inputString();
+		s=IO.inputString();
 
 
 		if (s.equals("typing")){
@@ -49,10 +50,10 @@ public class Nguiga /*extends GameModes*/{
               Loop, and exit_______________________________DONE
               Times in Seconds_____________________________DONE
               Loop, and exit EVERYWHERE____________________DONE
-              Custom Names_________________________________
+              Custom Names_________________________________DONE
               Switch case for tournament mode______________
               Handle the dead heat_________________________      @see AnnounceWinner_Method in class GameModes and TimeCalculation in Class QuickTyping/QuickCalc
-              Memorize the Players in file_________________
+              Memorize the Players in file_________________DONE
               Clean Code___________________________________DONE?
               Documentation________________________________DONE?
               Menù option__________________________________DONE?     @** Difficult to implement, needs something that can jump through the code, like the continue branching statement
