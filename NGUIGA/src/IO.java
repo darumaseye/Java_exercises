@@ -1,6 +1,6 @@
 /**
- * @version 1.1.0.3
- * @author Jacopo Taccucci (wonty) & SquallorX (since 1.1)
+ * @version 1.2
+ * @author Jacopo Taccucci (wonty) & SquallorX (for 1.1.0)
  * @since 1.1
  * @see Nguiga class for Description
  * */
@@ -45,7 +45,7 @@ public class IO{
 				f.format("%s %s",p[i].getName(),"    "+p[i].getTime()+" seconds\r\n");
 			}
 			f.close();
-			System.out.println("Done! File Created; you'll find at \""+t+"\"\n");
+			System.out.println("Done! File Created; you'll it find at \""+t+"\"\n");
 			File x=new File(t);
 			Desktop.getDesktop().open(x);
 		}catch(Exception e){
